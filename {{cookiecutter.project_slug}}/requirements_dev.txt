@@ -11,4 +11,4 @@ black==21.7b0
 isort==5.9.3
 pyinstaller==4.5
 {% if cookiecutter.command_line_interface|lower == 'click' -%}
-Click==7.0{% endif %}
+Click==7.1.2{% endif %}
