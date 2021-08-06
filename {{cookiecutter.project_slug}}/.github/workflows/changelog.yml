@@ -3,7 +3,7 @@ name: changelog
 on:
     pull_request:
         types: [opened, synchronize, labeled, unlabeled, reopened]
-
+{% raw %}
 jobs:
     check_changelog:
         name: Changelog Entry Check
@@ -19,3 +19,4 @@ jobs:
                   grep -Pz "\((\n\s*)?#${{ github.event.pull_request.number }}(\n\s*)?\)" HISTORY.rst || \
                   (echo "Please add '(#${{ github.event.pull_request.number }})' change line to HISTORY.rst" && \
                   exit 1)
+{% endraw %}

@@ -15,10 +15,10 @@ jobs:
 
         steps:
         - uses: actions/checkout@v1
-        - name: Set up Python ${{ matrix.python-version }}
+        - name: Set up Python {{ '${{ matrix.python-version }}' }}
           uses: actions/setup-python@v2
           with:
-                python-version: ${{ matrix.python-version }}
+                python-version: {{ '${{ matrix.python-version }}' }}
         - name: Install dependencies
           run: |
             python -m pip install --upgrade pip
@@ -45,11 +45,11 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-artifact@v2.2.4
               with:
-                  name: ${{ matrix.asset_name }}
+                  name: {{ '${{ matrix.asset_name }}' }}
                   path: dist/*
     build_binaries:
         name: Build binaries
-        runs-on: ${{ matrix.os }}
+        runs-on: {{ '${{ matrix.os }}' }}
         strategy:
             fail-fast: false
             matrix:
@@ -78,11 +78,11 @@ jobs:
 
             - name: Build binary
               run: |
-                  python -m PyInstaller -F --name ${{ matrix.asset_name }} {{ cookiecutter.project_slug }}/cli.py
+                  python -m PyInstaller -F --name {{ '${{ matrix.asset_name }}' }} {{ cookiecutter.project_slug }}/cli.py
 
             - name: Upload artifact
               uses: actions/upload-artifact@v2.2.4
               with:
-                name: ${{ matrix.asset_name }}
-                path: dist/${{ matrix.asset_name }}
+                name: {{ '${{ matrix.asset_name }}' }}
+                path: dist/{{ '${{ matrix.asset_name }}' }}
 
