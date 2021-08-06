@@ -30,7 +30,7 @@ Features
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `appcreatorguy/cookiecutter-pypackage`_ project template.
+This package was created with Cookiecutter_ and the `appcreatorguy/cookiecutter-pythonpackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`appcreatorguy/cookiecutter-pypackage`: https://github.com/appcreatorguy/cookiecutter-pypackage
+.. _`appcreatorguy/cookiecutter-pythonpackage`: https://github.com/appcreatorguy/cookiecutter-pythonpackage

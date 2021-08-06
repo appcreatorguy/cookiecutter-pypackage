@@ -3,7 +3,7 @@ Cookiecutter PyPackage
 ======================
 Cookiecutter_ template for a Python package.
 
-* GitHub repo: https://github.com/appcreatorguy/cookiecutter-pypackage/
+* GitHub repo: https://github.com/appcreatorguy/cookiecutter-pythonpackage/
 * Free software: BSD license
 
 Features
@@ -29,7 +29,7 @@ Cookiecutter 1.4.0 or higher)::
 
 Generate a Python package project::
 
-    cookiecutter https://github.com/appcreatorguy/cookiecutter-pypackage.git
+    cookiecutter https://github.com/appcreatorguy/cookiecutter-pythonpackage.git
 
 Then:
 
