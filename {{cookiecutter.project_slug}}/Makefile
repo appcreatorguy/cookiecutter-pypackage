@@ -1,4 +1,4 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help
+.PHONY: clean clean-pyc clean-test clean-build docs help
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -26,7 +26,7 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+clean: clean-build clean-pyc clean-test ## remove all build, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
@@ -49,6 +49,8 @@ clean-test: ## remove test and coverage artifacts
 
 lint: ## check style with flake8, isort and black
 	flake8 {{ cookiecutter.project_slug }} tests
+	isort {{ cookiecutter.project_slug}} tests
+	black {{ cookiecutter.project_slug}} tests
 
 test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
@@ -59,6 +61,16 @@ test: ## run tests quickly with the default Python
 
 test-all: ## run tests on every Python version with tox
 	tox
+
+coverage: ## check code coverage quickly with the default Python
+{%- if cookiecutter.use_pytest == 'y' %}
+	coverage run --source {{ cookiecutter.project_slug }} -m pytest
+{%- else %}
+	coverage run --source {{ cookiecutter.project_slug }} setup.py test
+{%- endif %}
+	coverage report -m
+	coverage html
+	$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.project_slug }}.rst
@@ -77,6 +89,10 @@ release: dist ## package and upload a release
 dist: clean ## builds source and wheel package
 	python setup.py sdist
 	python setup.py bdist_wheel
+	ls -l dist
+
+binary: clean ## build standalone binary
+	python -m PyInstaller -F --name {{ cookiecutter.project_slug }} {{cookiecutter.project_slug }}/cli.py
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages

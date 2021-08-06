@@ -7,8 +7,13 @@
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
         :target: https://pypi.python.org/pypi/{{ cookiecutter.project_slug }}
 
-.. image:: https://img.shields.io/travis/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg
-        :target: https://travis-ci.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+
+.. image:: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/python-build.yml/badge.svg
+        :target: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}/actions/workflows/python-build.yml
+
+.. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest
+        :target: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?version=latest
+        :alt: Documentation Status
 {%- endif %}
 
 {{ cookiecutter.project_short_description }}
