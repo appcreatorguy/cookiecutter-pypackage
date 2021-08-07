@@ -9,6 +9,7 @@
     "version": "0.1.0",
     "use_pytest": "y",
     "use_pypi_deployment_with_github": "y",
+    "automerge_dependabot_pull_requests": "y",
     "command_line_interface": [
         "Click",
         "Argparse",
